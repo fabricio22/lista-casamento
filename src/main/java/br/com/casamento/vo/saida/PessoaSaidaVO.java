@@ -2,18 +2,18 @@ package br.com.casamento.vo.saida;
 
 import br.com.casamento.modelo.Pessoa;
 
-public class PessoaVoSaida {
+public class PessoaSaidaVO {
 	
 	private String nome;
 	private String nomeGrupo;
 	private Long numeroMesa;
 	
 
-	public PessoaVoSaida() {
+	public PessoaSaidaVO() {
 		
 	}
 	
-	public PessoaVoSaida(Pessoa pessoa) {
+	public PessoaSaidaVO(Pessoa pessoa) {
 		this.nome = pessoa.getNome();
 		this.nomeGrupo = pessoa.getGrupo().getDescricao();
 		this.numeroMesa = pessoa.getMesa().getId();

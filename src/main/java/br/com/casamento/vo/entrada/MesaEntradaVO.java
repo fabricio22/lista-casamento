@@ -1,11 +1,14 @@
 package br.com.casamento.vo.entrada;
 
+import javax.validation.constraints.NotNull;
+
 import br.com.casamento.modelo.Mesa;
 
 public class MesaEntradaVO {
 
 	private Long id;
 	private Integer cadeirasDisponiveis;
+	@NotNull
 	private Integer quantidadeCadeiras;
 
 	public Long getId() {

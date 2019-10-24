@@ -16,7 +16,6 @@ public class Grupo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull @NotBlank @Length(min = 5)
 	private String descricao;
 
 	public Grupo() {
@@ -33,6 +32,10 @@ public class Grupo {
 
 	public String getDescricao() {
 		return descricao;
+	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override

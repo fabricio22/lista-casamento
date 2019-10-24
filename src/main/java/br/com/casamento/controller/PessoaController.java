@@ -24,7 +24,7 @@ import br.com.casamento.repository.GrupoRepository;
 import br.com.casamento.repository.MesaRepository;
 import br.com.casamento.repository.PessoaRepository;
 import br.com.casamento.vo.entrada.PessoaEntradaVO;
-import br.com.casamento.vo.saida.PessoaVoSaida;
+import br.com.casamento.vo.saida.PessoaSaidaVO;
 
 @RestController
 @RequestMapping("/pessoa")
@@ -41,13 +41,13 @@ public class PessoaController {
 
 	@GetMapping
 	public List<Pessoa> getTodasPessoas() {
-		
+
 		List<Pessoa> listapessoas = pessoaRepository.findAll();
 		return listapessoas;
 	}
 
 	@PostMapping
-	public ResponseEntity<PessoaVoSaida> cadastrar(@RequestBody @Validated PessoaEntradaVO pessoaVoEntrada,
+	public ResponseEntity<PessoaSaidaVO> cadastrar(@RequestBody @Validated PessoaEntradaVO pessoaVoEntrada,
 			UriComponentsBuilder uriBuilder) {
 
 		Grupo grupo = grupoRepository.findById(pessoaVoEntrada.getCodigoGrupo()).get();
@@ -62,20 +62,17 @@ public class PessoaController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			mesaRepository.save(mesa);
 			pessoaRepository.save(pessoa);
 		}
-		
+
 		URI uri = uriBuilder.path("pessoa/{id}").buildAndExpand(pessoa.getId()).toUri();
-		return ResponseEntity.created(uri).body(new PessoaVoSaida(pessoa));
+		return ResponseEntity.created(uri).body(new PessoaSaidaVO(pessoa));
 	}
-	
-	@GetMapping("/pesquisa-por-nome-convidado")
-	@SuppressWarnings("unchecked")
-	public PessoaVoSaida getPessoaByNome(@RequestParam(name = "convidado") String nome){
-		Pessoa pessoa = pessoaRepository.findByNome(nome);
-		PessoaVoSaida pessoaVoSaida = new PessoaVoSaida(pessoa);
-		return pessoaVoSaida;
+
+	@GetMapping("/{id}")
+	public PessoaSaidaVO getPessoaByid(@PathVariable Long id) {
+		return new PessoaSaidaVO(pessoaRepository.getOne(id));
 	}
 }

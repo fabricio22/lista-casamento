@@ -9,9 +9,7 @@ public class Mesa {
     	
 	@Id
 	private Long id;
-	@NotNull
 	private Integer quantidadeCadeiras;
-	@NotNull
 	private Integer quantidadeCadeirasDisponiveis;
 
 	public Mesa() {
