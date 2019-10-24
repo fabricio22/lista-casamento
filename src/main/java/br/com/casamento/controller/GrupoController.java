@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.casamento.modelo.Grupo;
 import br.com.casamento.repository.GrupoRepository;
-import br.com.casamento.vo.GrupoVo;
+import br.com.casamento.vo.entrada.GrupoEntradaVO;
 
 @RestController
 @RequestMapping("/grupo")
@@ -32,12 +32,12 @@ public class GrupoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<GrupoVo> cadastrar(@RequestBody @Validated GrupoVo nomeGrupo, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<GrupoEntradaVO> cadastrar(@RequestBody @Validated GrupoEntradaVO nomeGrupo, UriComponentsBuilder uriBuilder) {
 
 		Grupo grupo = nomeGrupo.converter(nomeGrupo);
 		grupoRepository.save(grupo);
 		URI uri = uriBuilder.path("/grupo/{id}").buildAndExpand(grupo.getId()).toUri();
-		return ResponseEntity.created(uri).body(new GrupoVo(grupo));
+		return ResponseEntity.created(uri).body(new GrupoEntradaVO(grupo));
 	}
 
 }

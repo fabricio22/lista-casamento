@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Mesa {
-
+    	
 	@Id
 	private Long id;
 	@NotNull
@@ -19,7 +19,7 @@ public class Mesa {
 	}
 
 	public Mesa(Long id, Integer cadeiras, Integer quantidadeCaderias) {
-		
+
 		this.id = id;
 		this.quantidadeCadeiras = quantidadeCaderias;
 		this.quantidadeCadeirasDisponiveis = quantidadeCaderias;
@@ -42,6 +42,20 @@ public class Mesa {
 
 	public Integer getQuantidadeCadeirasDisponiveis() {
 		return quantidadeCadeirasDisponiveis;
+	}
+	
+	public void setQuantidadeCadeirasDisponiveis(Integer quantidade) throws Exception {
+		
+		if(quantidade >= 0 && this.getQuantidadeCadeirasDisponiveis() >= 0) {
+			this.quantidadeCadeirasDisponiveis = quantidade;
+		}else {
+			throw new Exception("numero de cadeiras disponiveis excedito!");
+		}
+	}
+
+	public boolean getTemLugarDisponivel(Integer quantidadeCadeirasDisponiveis) {
+		
+		return quantidadeCadeirasDisponiveis > 0 ? true : false;
 	}
 
 }

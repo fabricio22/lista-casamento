@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.casamento.modelo.Mesa;
 import br.com.casamento.repository.MesaRepository;
-import br.com.casamento.vo.MesaVo;
+import br.com.casamento.vo.entrada.MesaEntradaVO;
 
 
 @RestController
@@ -32,16 +32,12 @@ public class MesaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<MesaVo> cadastrar(@RequestBody @Validated MesaVo mesaVo, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<MesaEntradaVO> cadastrar(@RequestBody @Validated MesaEntradaVO mesaVo, UriComponentsBuilder uriBuilder) {
 		
 		Mesa mesa = mesaVo.converter(mesaVo);
-		System.out.println("Mesa id: " + mesa.getId());
-		System.out.println("Quantidade: " + mesa.getQuantidadeCadeiras());
-		System.out.println("Disponivel: " + mesa.getQuantidadeCadeirasDisponiveis());
 		mesaRepository.save(mesa);	
 		URI uri = uriBuilder.path("/mesa/{id}").buildAndExpand(mesa.getId()).toUri();
-		return ResponseEntity.created(uri).body(new MesaVo(mesa.getId(), mesa.getQuantidadeCadeirasDisponiveis()));
-		
+		return ResponseEntity.created(uri).body(new MesaEntradaVO(mesa.getId(), mesa.getQuantidadeCadeirasDisponiveis()));
 	}
 	
 }

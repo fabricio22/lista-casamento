@@ -6,5 +6,4 @@ import br.com.casamento.modelo.Grupo;
 public interface GrupoRepository extends JpaRepository<Grupo, Long> {
 
 	public Grupo findByDescricao(String descricao);
-
 }

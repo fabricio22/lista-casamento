@@ -1,8 +1,8 @@
-package br.com.casamento.vo;
+package br.com.casamento.vo.entrada;
 
 import br.com.casamento.modelo.Mesa;
 
-public class MesaVo {
+public class MesaEntradaVO {
 
 	private Long id;
 	private Integer cadeirasDisponiveis;
@@ -20,17 +20,17 @@ public class MesaVo {
 		return quantidadeCadeiras;
 	}
 
-	public MesaVo() {
+	public MesaEntradaVO() {
 
 	}
 	
-	public MesaVo(Long idMesa, Integer quantidadeCadeiras) {
+	public MesaEntradaVO(Long idMesa, Integer quantidadeCadeiras) {
 		this.id = idMesa;
 		this.quantidadeCadeiras = quantidadeCadeiras;
 		this.cadeirasDisponiveis = quantidadeCadeiras;
 	}
 	
-	public Mesa converter(MesaVo dadosEntradaVo) {
+	public Mesa converter(MesaEntradaVO dadosEntradaVo) {
 		
 		Mesa mesa = new Mesa(dadosEntradaVo.getId(), dadosEntradaVo.getQuantidadeCadeiras());
 		return mesa;

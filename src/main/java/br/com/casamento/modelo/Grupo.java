@@ -34,6 +34,10 @@ public class Grupo {
 	public String getDescricao() {
 		return descricao;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "Grupo [id=" + id + ", descricao=" + descricao + "]";
+	}
+	
 }

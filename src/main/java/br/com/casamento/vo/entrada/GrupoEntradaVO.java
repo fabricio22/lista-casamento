@@ -1,8 +1,8 @@
-package br.com.casamento.vo;
+package br.com.casamento.vo.entrada;
 
 import br.com.casamento.modelo.Grupo;
 
-public class GrupoVo {
+public class GrupoEntradaVO {
 
 	private String descricao;
 
@@ -14,15 +14,15 @@ public class GrupoVo {
 		this.descricao = descricao;
 	}
 
-	public GrupoVo() {
+	public GrupoEntradaVO() {
 
 	}
 
-	public GrupoVo(Grupo grupo) {
+	public GrupoEntradaVO(Grupo grupo) {
 		this.descricao = grupo.getDescricao();
 	}
 
-	public Grupo converter(GrupoVo dadosEntradaVo) {
+	public Grupo converter(GrupoEntradaVO dadosEntradaVo) {
 
 		Grupo grupo = new Grupo(dadosEntradaVo.getDescricao());
 		return grupo;

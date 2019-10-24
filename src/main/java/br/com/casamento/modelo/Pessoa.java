@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,14 +16,21 @@ public class Pessoa {
 	private String nome;
 	@OneToOne
 	private Grupo grupo;
+	@OneToOne
+	private Mesa mesa;
 
 	public Pessoa() {
 
 	}
 
-	public Pessoa(String nome, String grupo) {
+	public Pessoa(String nome, Grupo grupo, Mesa mesa) {
 		this.nome = nome;
-		new Grupo(grupo);
+		this.grupo = grupo;
+		this.mesa = mesa;
+	}
+	
+	public Pessoa(String nome) {
+		this.nome = nome;
 	}
 
 	public Long getId() {
@@ -31,6 +39,14 @@ public class Pessoa {
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public Grupo getGrupo() {
+        return grupo;
+	}
+	
+	public Mesa getMesa() {
+		return mesa;
 	}
 
 }
