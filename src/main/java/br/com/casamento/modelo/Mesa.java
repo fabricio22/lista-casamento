@@ -2,11 +2,10 @@ package br.com.casamento.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Mesa {
-    	
+
 	@Id
 	private Long id;
 	private Integer quantidadeCadeiras;
@@ -41,19 +40,34 @@ public class Mesa {
 	public Integer getQuantidadeCadeirasDisponiveis() {
 		return quantidadeCadeirasDisponiveis;
 	}
-	
+
+	public void addMaisCadeiras(Integer quantidade) {
+		this.quantidadeCadeiras = this.quantidadeCadeiras + quantidade;
+		this.quantidadeCadeirasDisponiveis = this.getQuantidadeCadeirasDisponiveis() + quantidade;
+	}
+
 	public void setQuantidadeCadeirasDisponiveis(Integer quantidade) throws Exception {
-		
-		if(quantidade >= 0 && this.getQuantidadeCadeirasDisponiveis() >= 0) {
+
+		if (quantidade >= 0 && this.getQuantidadeCadeirasDisponiveis() >= 0) {
 			this.quantidadeCadeirasDisponiveis = quantidade;
-		}else {
+		} else {
 			throw new Exception("numero de cadeiras disponiveis excedito!");
 		}
 	}
 
-	public boolean getTemLugarDisponivel(Integer quantidadeCadeirasDisponiveis) {
-		
+	public boolean getTemLugarDisponivel() {
+
 		return quantidadeCadeirasDisponiveis > 0 ? true : false;
+	}
+
+	public void aumentarCadeirasDisponiveis() {
+		this.quantidadeCadeirasDisponiveis = this.getQuantidadeCadeirasDisponiveis() + 1;
+	}
+
+	public void diminuirCadeirasDisponiveis() {
+		if (this.getQuantidadeCadeirasDisponiveis() >= 0) {
+			this.quantidadeCadeirasDisponiveis = this.getQuantidadeCadeirasDisponiveis() - 1;
+		}
 	}
 
 }

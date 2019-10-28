@@ -48,5 +48,17 @@ public class Pessoa {
 	public Mesa getMesa() {
 		return mesa;
 	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
+	}
+	
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
+	}
 
 }
