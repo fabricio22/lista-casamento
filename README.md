@@ -11,7 +11,8 @@ A Api será utilizada para controlar a lista de convidados.
 
 <p>Todo pessoa tem que estar relacionado a um grupo e uma mesa no momento do cadastro.</p>
 
-Acessos:
-http://localhost:8080/h2-console/login.jsp?jsessionid=23627b826e35e3be69b81fab6e3a9a0e
-http://localhost:8080/swagger-ui.html
+<ul>Acessos:
+  <li>http://localhost:8080/h2-console/login.jsp?jsessionid=23627b826e35e3be69b81fab6e3a9a0e</li>
+  <li>http://localhost:8080/swagger-ui.html</li>
+</ul>
 
