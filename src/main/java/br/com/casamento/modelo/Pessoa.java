@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Pessoa {
 
@@ -17,6 +20,7 @@ public class Pessoa {
 	@OneToOne
 	private Grupo grupo;
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	private Mesa mesa;
 
 	public Pessoa() {

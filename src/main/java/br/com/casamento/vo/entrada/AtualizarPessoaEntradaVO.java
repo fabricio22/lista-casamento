@@ -7,7 +7,6 @@ import br.com.casamento.modelo.Pessoa;
 import br.com.casamento.repository.GrupoRepository;
 import br.com.casamento.repository.MesaRepository;
 import br.com.casamento.repository.PessoaRepository;
-import br.com.casamento.validation.PessoaNotFoundException;
 
 public class AtualizarPessoaEntradaVO {
 
@@ -37,7 +36,8 @@ public class AtualizarPessoaEntradaVO {
 		return this.idMesa;
 	}
 
-	public Pessoa atualizar(Long id, PessoaRepository pessoaRepository, MesaRepository mesaRepository,
+	
+	public Optional<Pessoa> atualizar(Long id, PessoaRepository pessoaRepository, MesaRepository mesaRepository,
 			GrupoRepository grupoRepository) throws Exception {
 
 		Optional<Pessoa> pessoa = null;
@@ -48,7 +48,7 @@ public class AtualizarPessoaEntradaVO {
 			pessoa = pessoaRepository.findById(id);
 
 			if (!pessoa.isPresent()) {
-				throw new PessoaNotFoundException();
+				return pessoa;
 			} else {
 				Mesa mesaAntiga = pessoa.get().getMesa();
 				mesaAntiga.aumentarCadeirasDisponiveis();
@@ -63,7 +63,7 @@ public class AtualizarPessoaEntradaVO {
 		} else {
 			throw new Exception("Nao há lugares disponiveis para a mesa escolhida.");
 		}
-		return pessoa.get();
+		return pessoa;
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @RestControllerAdvice
 public class EntradaControllerExceptionHandler {
@@ -34,5 +35,10 @@ public class EntradaControllerExceptionHandler {
 
 		return erroEntrada;
 	}
-
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
+	public RetornoErroParametroEntradaVO handler(MethodArgumentTypeMismatchException ex) {
+		return new RetornoErroParametroEntradaVO(null, "Paramentro Invalido");
+	}
 }

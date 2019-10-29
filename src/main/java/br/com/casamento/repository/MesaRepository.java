@@ -6,6 +6,4 @@ import br.com.casamento.modelo.Mesa;
 
 public interface MesaRepository extends JpaRepository<Mesa, Long>{
 
-	public Mesa findByid(Long id);
-	
 }

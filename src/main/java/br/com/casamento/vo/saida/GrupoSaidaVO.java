@@ -9,7 +9,7 @@ public class GrupoSaidaVO {
 	@NotFound
 	private Long id;
 	private String descricao;
-	
+		
 	public GrupoSaidaVO() {
 		
 	}
@@ -25,5 +25,5 @@ public class GrupoSaidaVO {
 	
 	public String getDescricao() {
 		return descricao;
-	}	
+	}
 }

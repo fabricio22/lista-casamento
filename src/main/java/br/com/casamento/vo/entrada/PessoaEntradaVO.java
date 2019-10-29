@@ -13,7 +13,9 @@ public class PessoaEntradaVO {
 	
 	@NotNull @NotBlank @Length(min = 15)
 	private String nome;
+	@NotNull
 	private Long codigoGrupo;
+	@NotNull
 	private Long numeroMesa;
 
 	public String getNome() {

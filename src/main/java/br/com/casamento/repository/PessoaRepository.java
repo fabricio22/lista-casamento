@@ -6,6 +6,4 @@ import br.com.casamento.modelo.Pessoa;
 
 public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
 	
-	public Pessoa findByNome(String nome);
-
 }
